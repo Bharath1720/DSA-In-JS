@@ -37,7 +37,6 @@
 
 // Ex: "abc" +"def" => "abcdef"
 
-
 // let stars = ""
 
 // stars = stars + "*" => "" + * => *  => 1st time
@@ -49,19 +48,16 @@
 // stars = stars + "*" => * + * => *** => 4th time
 
 function solidSquare(size) {
-    for (let i = 0; i < size; i++) {
-        let row = "";
-        for (let j = 0; j < size; j++) {
-            row += "* ";
-        }
-        console.log(row);
+  for (let i = 0; i < size; i++) {
+    let row = "";
+    for (let j = 0; j < size; j++) {
+      row += "* ";
     }
+    console.log(row);
+  }
 }
 
 solidSquare(5);
-
-
-
 
 // Function Declaration:
 
@@ -201,24 +197,22 @@ solidSquare(5);
 
 // Output:
 
-// * * * * * 
-// * * * * * 
-// * * * * * 
-// * * * * * 
-// * * * * * 
-
-
+// * * * * *
+// * * * * *
+// * * * * *
+// * * * * *
+// * * * * *
 
 // ----------------------------------------Left-Aligned Triangle Pattern------------------------------------------//
 
 function leftTriangle(size) {
-    for (let i = 1; i <= size; i++) {
-        let row = "";
-        for (let j = 1; j <= i; j++) {
-            row += "* ";
-        }
-        console.log(row);
+  for (let i = 1; i <= size; i++) {
+    let row = "";
+    for (let j = 1; j <= i; j++) {
+      row += "* ";
     }
+    console.log(row);
+  }
 }
 
 leftTriangle(5);
@@ -341,8 +335,200 @@ leftTriangle(5);
 
 // Print: * * * * *
 
-// * 
-// * * 
-// * * * 
-// * * * * 
-// * * * * * 
+// *
+// * *
+// * * *
+// * * * *
+// * * * * *
+
+// ----------------------------------------Right-Aligned Triangle Pattern------------------------------------------//
+
+function rightAlignedTriangle(rows) {
+  for (let i = 1; i <= rows; i++) {
+    let spaces = " ".repeat(rows - i);
+    let stars = "*".repeat(i);
+    console.log(spaces + stars);
+  }
+}
+
+rightAlignedTriangle(5);
+
+function rightAlignedTriangle1(rows) {
+  for (let i = 1; i <= rows; i++) {
+    let line = "";
+
+    // Add spaces for right alignment
+    for (let j = 0; j < rows - i; j++) {
+      line += " ";
+    }
+
+    // Add stars with spaces in between
+    for (let k = 0; k < i; k++) {
+      line += "*";
+      if (k < i - 1) {
+        // Add space only between stars, not after the last star
+        line += " ";
+      }
+    }
+
+    console.log(line);
+  }
+}
+
+rightAlignedTriangle1(5);
+
+// Explanation and Dry Run
+
+// Function Definition: rightAlignedTriangle(rows) takes the number of rows as an argument.
+
+// Outer Loop: for (let i = 1; i <= rows; i++) iterates from 1 to the number of rows.
+
+// Spaces Calculation: ' '.repeat(rows - i) generates the spaces needed to align the stars to the right.
+
+// Stars Calculation: '*'.repeat(i) generates the stars for the current row.
+
+// Printing: console.log(spaces + stars) prints the spaces followed by stars.
+
+// Dry Run
+
+// Let's dry run this with rows = 5:
+
+// Row 1:
+
+// i = 1
+
+// spaces = ' '.repeat(5 - 1) = ' ' (4 spaces)
+
+// stars = '*'.repeat(1) = '*'
+
+// Output: *
+
+// Row 2:
+
+// i = 2
+
+// spaces = ' '.repeat(5 - 2) = ' ' (3 spaces)
+
+// stars = '*'.repeat(2) = '**'
+
+// Output: **
+
+// Row 3:
+
+// i = 3
+
+// spaces = ' '.repeat(5 - 3) = ' ' (2 spaces)
+
+// stars = '*'.repeat(3) = '***'
+
+// Output: ***
+
+// Row 4:
+
+// i = 4
+
+// spaces = ' '.repeat(5 - 4) = ' ' (1 space)
+
+// stars = '*'.repeat(4) = '****'
+
+// Output: ****
+
+// Row 5:
+
+// i = 5
+
+// spaces = ' '.repeat(5 - 5) = '' (0 spaces)
+
+// stars = '*'.repeat(5) = '*****'
+
+// Output: *****
+
+// ----------------------------Piramid Pattern -------------------------------------------//
+
+function pyramidPattern(rows) {
+  // Loop through each row
+  for (let currentRow = 1; currentRow <= rows; currentRow++) {
+    let line = ""; // Start with an empty line
+
+    // Add spaces before the stars
+    for (let spaceCount = 1; spaceCount <= rows - currentRow; spaceCount++) {
+      line += " "; // Add a space
+    }
+
+    // Add stars for the current row
+    for (let starCount = 1; starCount <= 2 * currentRow - 1; starCount++) {
+      line += "*"; // Add a star
+    }
+
+    console.log(line); // Print the line for the current row
+  }
+}
+
+// Call the function with the desired number of rows
+pyramidPattern(5);
+
+// -------------------------------New Pattern--------------------------------//
+
+// * * * * *
+// * * * *
+// * * *
+// * *
+// *
+
+function pattern(num) {
+  for (let i = 0; i < num; i++) {
+    let stars = "";
+    for (let j = 0; j < num - i; j++) {
+      stars = stars + "* ";
+    }
+    console.log(stars);
+  }
+}
+
+pattern(5);
+
+
+// ---------------------------------------Diamond Pattern-----------------------------------//
+
+function diamondPattern(rows) {
+  // Upper part of the diamond (including the middle line)
+  for (let currentRow = 1; currentRow <= rows; currentRow++) {
+    let line = "";
+
+    // Add leading spaces to center the stars
+    for (let spaceCount = 1; spaceCount <= rows - currentRow; spaceCount++) {
+      line += " ";
+    }
+
+    // Add stars
+    for (let starCount = 1; starCount <= 2 * currentRow - 1; starCount++) {
+      line += "*";
+    }
+
+    console.log(line);
+  }
+
+  // Lower part of the diamond
+  for (let currentRow = rows - 1; currentRow >= 1; currentRow--) {
+    let line = "";
+
+    // Add leading spaces to center the stars
+    for (let spaceCount = 1; spaceCount <= rows - currentRow; spaceCount++) {
+      line += " ";
+    }
+
+    // Add stars
+    for (let starCount = 1; starCount <= 2 * currentRow - 1; starCount++) {
+      line += "*";
+    }
+
+    console.log(line);
+  }
+}
+
+// Call the function with the desired number of rows
+diamondPattern(5);
+
+
+//--------------------------------------- Butterfly pattern--------------------------------//
+
